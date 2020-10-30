@@ -4,8 +4,7 @@ pipeline{
 	environment {
 		PATH = "/opt/maven3/bin:$PATH"		
 	}
-	stages{
-	
+	stages{	
 		stage("SCM - Checkout"){
 			steps{
 				git CredentialsId 'github', url: 'https://github.com/yabhane/myweb'			
@@ -14,7 +13,7 @@ pipeline{
 		
 	      stage("Maven Build"){
 			steps{
-				sh "mvn clen package"			
+				sh "mvn clean package"			
 			}
 	      }
 	}   
