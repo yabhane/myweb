@@ -17,7 +17,8 @@ pipeline{
         }
         stage("Maven Build"){
             steps{
-                sh "mvn clean package"
+               // sh "mvn clean package"
+               sh "-Dmaven.test.failure.ignore=true"
                 sh "mv target/*.war target/myweb.war"
             }
         }
