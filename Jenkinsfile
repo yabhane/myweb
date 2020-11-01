@@ -24,6 +24,6 @@ pipeline{
 
 
 def getMavenPath(){
-	def mvnHome = tool name: 'maven-3', type: 'maven'
+	 def mvnHome = tool name: 'Maven3', type: 'maven'
 	return "${mvnHome}/bin"
 }
