@@ -12,22 +12,18 @@ pipeline{
 				git 'https://github.com/yabhane/myweb'			
 			   }
 		}
-		 stage("Compile-Package"){
-			 steps{
-	  	 //Get Maven home directory path
+		
+	      	
+		
+		stage("Maven Build"){
+			steps{
+				//Get Maven home directory path
 	 	 def mvnHome = tool name: 'Maven3', type: 'maven'
 	   	//Using this path we are given path to mvn command
 	  	 sh "${mvnHome}/bin/mvn package"
-				 //Output : Created packages in war file
-			 }
-  		 }
-	      	
-		
-		/*stage("Maven Build"){
-			steps{
-				sh "mvn clean package"			
+				 //Output : Created packages in war file		
 			}
-	      }*/
+	      }
 	}   
 }
 
