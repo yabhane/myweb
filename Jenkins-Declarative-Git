@@ -3,7 +3,7 @@ currentBuild.displayName = "online-shopping-#"+currentBuild.number
 pipeline{
     agent any
     tools {
-        //maven 'Maven3'
+        maven 'Maven3'
         //jdk 'jdk1.8'
     }
     environment{
