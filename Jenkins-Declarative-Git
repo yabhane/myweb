@@ -7,7 +7,7 @@ pipeline{
         //jdk 'jdk1.8'
     }
     environment{
-        PATH = "/opt/maven3/bin:$PATH"
+       PATH = "${PATH}:${getMavenPath()}"
     }
     stages{
         stage("Git Checkout"){
@@ -26,4 +26,8 @@ pipeline{
         }
  
     }
+}
+def getMavenPath(){
+	 def mvnHome = tool name: 'Maven3', type: 'maven'
+	return "${mvnHome}/bin"
 }
