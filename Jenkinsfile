@@ -8,17 +8,24 @@ pipeline{
 	}
 	stages{	
 		stage("SCM - Checkout"){
-			steps{
-				//git CredentialsId 'github', url: 'https://github.com/yabhane/myweb'			
+			steps{						
 				git 'https://github.com/yabhane/myweb'			
 			   }
 		}
+		 stage('Compile-Package'){
+	  	 //Get Maven home directory path
+	 	 def mvnHome = tool name: 'Maven3', type: 'maven'
+	   	//Using this path we are given path to mvn command
+	  	 sh "${mvnHome}/bin/mvn package"
+      	 	//Output : Created packages in war file
+  		 }
+	      	
 		
-	      stage("Maven Build"){
+		/*stage("Maven Build"){
 			steps{
 				sh "mvn clean package"			
 			}
-	      }
+	      }*/
 	}   
 }
 
