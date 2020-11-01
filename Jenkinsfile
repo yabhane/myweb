@@ -3,7 +3,8 @@ pipeline{
 	
 	environment {
 		//PATH = "/opt/maven3/bin:$PATH"		
-		PATH = "/maven3/bin:$PATH"		
+		//PATH = "/maven3/bin:$PATH"	
+		PATH = "${PATH}:${getMavenPath()}"
 	}
 	stages{	
 		stage("SCM - Checkout"){
@@ -22,3 +23,7 @@ pipeline{
 }
 
 
+def getMavenPath(){
+	def mvnHome = tool name: 'maven-3', type: 'maven'
+	return "${mvnHome}/bin"
+}
