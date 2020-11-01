@@ -6,7 +6,9 @@ pipeline{
         maven 'Maven3'
         //jdk 'jdk1.8'
     }
-  
+    environment{
+        PATH = "/opt/maven3/bin:$PATH"
+    }
     stages{
         stage("Git Checkout"){
             steps{
@@ -17,6 +19,7 @@ pipeline{
           
             steps {
                  //sh "mvn clean package"
+                  echo "mvn path is ${PATH}"
                  sh 'mvn -Dmaven.test.failure.ignore=true install' 
             }
             
