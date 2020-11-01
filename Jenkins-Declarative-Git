@@ -16,10 +16,14 @@ pipeline{
             }
         }
         stage("Maven Build"){
-            steps{
-               sh "mvn clean package"
-               //sh "-Dmaven.test.failure.ignore=true"
-                sh "mv target/*.war target/myweb.war"
+          
+            steps {
+                sh 'mvn -Dmaven.test.failure.ignore=true install' 
+            }
+            post {
+                success {
+                    junit 'target/surefire-reports/**/*.xml' 
+                }
             }
         }
         stage("deploy-dev"){
