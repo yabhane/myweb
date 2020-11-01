@@ -2,7 +2,10 @@ currentBuild.displayName = "online-shopping-#"+currentBuild.number
 
 pipeline{
     agent any
-    
+    tools {
+        maven 'Maven3'
+      
+    }
     environment{
         PATH = "/opt/maven3/bin:$PATH"
     }
