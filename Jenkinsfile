@@ -12,7 +12,7 @@ pipeline{
 				git 'https://github.com/yabhane/myweb'			
 			   }
 		}
-		 stage('Compile-Package'){
+		 stage("Compile-Package"){
 			 steps{
 	  	 //Get Maven home directory path
 	 	 def mvnHome = tool name: 'Maven3', type: 'maven'
